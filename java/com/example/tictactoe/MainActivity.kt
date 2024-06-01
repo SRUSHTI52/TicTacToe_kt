@@ -33,6 +33,19 @@ class MainActivity : AppCompatActivity() {
         binding.playerOneName.text = getPlayerOneName
         binding.playerTwoName.text = getPlayerTwoName
 
+        if (playerTurn == 1) {
+
+            binding.playerOneLayout.setBackgroundResource(R.drawable.white_box_white)
+            binding.playerTwoLayout.setBackgroundResource(R.drawable.lav_box_without_border)
+            binding.playerOneName.setTextColor(resources.getColor(R.color.lavender,null))
+            binding.playerTwoName.setTextColor(resources.getColor(R.color.white, null))
+        } else {
+
+            binding.playerOneLayout.setBackgroundResource(R.drawable.lav_box_without_border)
+            binding.playerTwoLayout.setBackgroundResource(R.drawable.white_box_white)
+            binding.playerOneName.setTextColor(resources.getColor(R.color.white, null))
+            binding.playerTwoName.setTextColor(resources.getColor(R.color.lavender, null))
+        }
         binding.image1.setOnClickListener { view ->
             if (isBoxSelectable(0)) {
                 performAction(view as ImageView, 0)
@@ -128,13 +141,11 @@ class MainActivity : AppCompatActivity() {
     private fun changePlayerTurn(currentPlayerTurn: Int) {
         playerTurn = currentPlayerTurn
         if (playerTurn == 1) {
-            //binding.playerOneLayout.setBackgroundResource(R.drawable.black_border)
             binding.playerOneLayout.setBackgroundResource(R.drawable.white_box_white)
             binding.playerTwoLayout.setBackgroundResource(R.drawable.lav_box_without_border)
             binding.playerOneName.setTextColor(resources.getColor(R.color.lavender,null))
             binding.playerTwoName.setTextColor(resources.getColor(R.color.white, null))
         } else {
-            //binding.playerTwoLayout.setBackgroundResource(R.drawable.black_border)
             binding.playerOneLayout.setBackgroundResource(R.drawable.lav_box_without_border)
             binding.playerTwoLayout.setBackgroundResource(R.drawable.white_box_white)
             binding.playerOneName.setTextColor(resources.getColor(R.color.white, null))
@@ -158,7 +169,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun restartMatch() {
-        boxPositions = intArrayOf(0, 0, 0, 0, 0, 0, 0, 0, 0) // 9 zero
+        boxPositions = intArrayOf(0, 0, 0, 0, 0, 0, 0, 0, 0)
         playerTurn = 1
         totalSelectedBoxes = 1
         binding.image1.setImageResource(R.drawable.lav_box_without_border)
